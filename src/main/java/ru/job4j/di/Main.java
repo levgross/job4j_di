@@ -1,16 +1,10 @@
 package ru.job4j.di;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 public class Main {
     public static void main(String[] args) {
-        Context context = new Context();
-        context.reg(Store.class);
-        context.reg(ConsoleInput.class);
-        context.reg(StartUI.class);
-
-        StartUI ui = context.get(StartUI.class);
-
-        ui.add(ui.askString("What`s your name?"));
-        ui.add(ui.askString("What`s your name?"));
-        ui.print();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("ru.job4j.di.lifecycle");
+        context.close();
     }
 }
